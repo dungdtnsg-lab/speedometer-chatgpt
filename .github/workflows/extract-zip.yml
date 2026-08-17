@@ -1,4 +1,4 @@
-name: Extract uploaded ZIP
+name: Extract ZIP and Build IPA
 
 on:
   workflow_dispatch:
@@ -10,12 +10,26 @@ permissions:
   contents: write
 
 jobs:
-  extract:
-    runs-on: ubuntu-latest
+  extract-and-build:
+    runs-on: macos-15
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install CocoaPods
+        run: |
+          if ! command -v pod >/dev/null 2>&1; then
+            brew install cocoapods
+          fi
+
+          pod --version
+          xcodebuild -version
 
       - name: Extract ZIP source
         shell: bash
@@ -26,31 +40,112 @@ jobs:
           zips=( *.zip )
 
           if [ "${#zips[@]}" -eq 0 ]; then
-            echo "Không tìm thấy file ZIP ở thư mục gốc."
+            echo "Không tìm thấy file ZIP."
             exit 1
           fi
 
           zip_file="${zips[0]}"
           echo "Đang bung: $zip_file"
 
-          rm -rf .unpacked-source
-          mkdir .unpacked-source
+          rm -rf "$GITHUB_WORKSPACE/.unpacked-source"
+          mkdir -p "$GITHUB_WORKSPACE/.unpacked-source"
 
-          unzip -q -o "$zip_file" -d .unpacked-source
+          unzip -q -o "$zip_file" \
+            -d "$GITHUB_WORKSPACE/.unpacked-source"
 
-          entries=(.unpacked-source/*)
-          source_dir=".unpacked-source"
+          entries=(
+            "$GITHUB_WORKSPACE/.unpacked-source"/*
+          )
 
-          if [ "${#entries[@]}" -eq 1 ] && [ -d "${entries[0]}" ]; then
+          source_dir="$GITHUB_WORKSPACE/.unpacked-source"
+
+          if [ "${#entries[@]}" -eq 1 ] \
+            && [ -d "${entries[0]}" ]; then
             source_dir="${entries[0]}"
           fi
 
           rm -rf "$source_dir/.git"
-          cp -R "$source_dir"/. .
-          rm -rf .unpacked-source
+
+          echo "SOURCE_DIR=$source_dir" >> "$GITHUB_ENV"
+
+      - name: Install JavaScript dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$SOURCE_DIR"
+          npm ci
+
+      - name: Sync Capacitor iOS
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$SOURCE_DIR"
+          npx cap sync ios
+
+      - name: Install iOS Pods
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$SOURCE_DIR/ios/App"
+          pod install
+
+      - name: Build unsigned iOS app
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$SOURCE_DIR"
+
+          xcodebuild \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath "$SOURCE_DIR/build/DerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            clean build
+
+      - name: Package IPA
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -rf "$GITHUB_WORKSPACE/build"
+          mkdir -p "$GITHUB_WORKSPACE/build/Payload"
+
+          cp -R \
+            "$SOURCE_DIR/build/DerivedData/Build/Products/Release-iphoneos/App.app" \
+            "$GITHUB_WORKSPACE/build/Payload/App.app"
+
+          cd "$GITHUB_WORKSPACE/build"
+          zip -qry GPS-Speedometer-unsigned.ipa Payload
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GPS-Speedometer-unsigned-ipa
+          path: build/GPS-Speedometer-unsigned.ipa
+          if-no-files-found: error
+
+      - name: Commit extracted source
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -rf "$GITHUB_WORKSPACE/build"
+
+          cp -R "$SOURCE_DIR"/. "$GITHUB_WORKSPACE"/
+
+          rm -f \
+            "$GITHUB_WORKSPACE/.github/workflows/build-ios-ipa.yml"
+
+          rm -rf "$GITHUB_WORKSPACE/.unpacked-source"
 
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add -A
 
@@ -59,5 +154,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Extract uploaded ZIP source"
-          git push
+          git commit -m "Extract source and build IPA"
+          git push origin HEAD:main
