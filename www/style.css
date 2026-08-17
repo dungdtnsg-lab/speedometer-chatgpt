@@ -8,15 +8,27 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+}
+
 html, body {
   background-color: #07090e;
   color: #f1f5f9;
   height: 100%;
+  min-height: 100%;
   width: 100%;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Roboto, sans-serif;
   overscroll-behavior-y: none;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100dvh;
 }
 
 body.hud-mode {
@@ -26,15 +38,18 @@ body.hud-mode {
 .app-container {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
   height: 100vh;
   height: 100dvh;
   max-width: 480px;
   margin: 0 auto;
   background: #07090e;
   position: relative;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-left: env(safe-area-inset-left, 0px);
-  padding-right: env(safe-area-inset-right, 0px);
+  /* Capacitor uses contentInset: never; apply iPhone safe areas exactly once here. */
+  padding-top: var(--safe-area-top);
+  padding-right: var(--safe-area-right);
+  padding-bottom: var(--safe-area-bottom);
+  padding-left: var(--safe-area-left);
 }
 
 /* ==================== SPEEDOMETER DASHBOARD ==================== */
@@ -323,6 +338,7 @@ body.hud-mode {
 /* ==================== TAB CONTENT AREA ==================== */
 .tab-content-area {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 6px 8px;
@@ -335,6 +351,7 @@ body.hud-mode {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  min-height: 0;
 }
 
 .tab-pane.active {
@@ -397,6 +414,7 @@ body.hud-mode {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  min-height: 0;
 }
 
 .track-subview.active {
@@ -488,6 +506,7 @@ body.hud-mode {
 /* ==================== GOOGLE MAPS VIEW ==================== */
 .map-wrapper {
   position: relative;
+  flex: 1 1 auto;
   width: 100%;
   height: 100%;
   min-height: 240px;
@@ -782,7 +801,7 @@ body.hud-mode {
 .app-footer {
   display: flex;
   gap: 8px;
-  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+  padding: 8px 12px;
   background: #07090e;
   border-top: 1px solid #1e2638;
   flex-shrink: 0;

@@ -1,8 +1,8 @@
 version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
 options: "fe9796da9e5f284bd07dd56ebc705b0df349e45db6feb676d75a734a40b6c1f7"
-build_start_time: [1786983454, 899631000]
-build_end_time: [1786983465, 615963000]
+build_start_time: [1786984845, 412658000]
+build_end_time: [1786984851, 488979000]
 inputs:
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/build/DerivedData/Build/Intermediates.noindex/App.build/Release-iphoneos/App.build/DerivedSources/GeneratedAssetSymbols.swift"
-  : [1786983454, 178600708]
+  : [1786984842, 282090616]
   "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/ios/App/App/AppDelegate.swift": [1786980970, 0]

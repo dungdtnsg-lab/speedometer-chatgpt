@@ -1,7 +1,7 @@
 version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
 options: "5fc83dd5152128c18f017f17d3604dc4763167a281a5dccbe727f865ee0c3d44"
-build_start_time: [1786983452, 111753000]
-build_end_time: [1786983454, 30834000]
+build_start_time: [1786984840, 187290000]
+build_end_time: [1786984842, 109407000]
 inputs:
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/app/ios/Sources/AppPlugin/AppPlugin.swift"
-  : [1786983421, 635147624]
+  : [1786984807, 503458491]
