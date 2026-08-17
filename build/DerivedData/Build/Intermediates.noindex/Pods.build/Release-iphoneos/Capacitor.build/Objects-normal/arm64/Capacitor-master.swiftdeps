@@ -1,95 +1,95 @@
 version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
 options: "b2cbb86c082ed2f7a031c61d576787ed51035bb49eb67eb0dba0df9d7a6cad19"
-build_start_time: [1786984826, 229306000]
-build_end_time: [1786984840, 815571000]
+build_start_time: [1786985068, 579854000]
+build_end_time: [1786985091, 806119000]
 inputs:
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/AppUUID.swift"
-  : [1786984807, 603942658]
+  : [1786985045, 57215891]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Array+Capacitor.swift"
-  : [1786984807, 604264241]
+  : [1786985045, 58970893]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPApplicationDelegateProxy.swift"
-  : [1786984807, 610162616]
+  : [1786985045, 68580529]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPBridge.swift"
-  : [1786984807, 662730657]
+  : [1786985045, 69303432]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPBridgeDelegate.swift"
-  : [1786984807, 663106949]
+  : [1786985045, 70051556]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPBridgeProtocol.swift"
-  : [1786984807, 664347241]
+  : [1786985045, 71579278]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPBridgeViewController.swift"
-  : [1786984807, 675232658]
+  : [1786985045, 72920323]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPBridgedPlugin+getMethod.swift"
-  : [1786984807, 663904116]
+  : [1786985045, 70705550]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPFile.swift"
-  : [1786984807, 675599658]
+  : [1786985045, 74595702]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPInstanceConfiguration.swift"
-  : [1786984807, 676028782]
+  : [1786985045, 75126175]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPInstanceDescriptor.swift"
-  : [1786984807, 676334366]
+  : [1786985045, 76343033]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPInstancePlugin.swift"
-  : [1786984807, 676799866]
+  : [1786985045, 77762826]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPLog.swift"
-  : [1786984807, 676982449]
+  : [1786985045, 78304055]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPNotifications.swift"
-  : [1786984807, 677317199]
+  : [1786985045, 79445626]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPPlugin+LoadInstance.swift"
-  : [1786984807, 677623491]
+  : [1786985045, 80127299]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPPluginCall.swift"
-  : [1786984807, 678094491]
+  : [1786985045, 81121880]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CAPPluginMethod.swift"
-  : [1786984807, 678307574]
+  : [1786985045, 82460049]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CapacitorBridge.swift"
-  : [1786984807, 605444074]
+  : [1786985045, 60477897]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/CapacitorExtension.swift"
-  : [1786984807, 607905991]
+  : [1786985045, 63569108]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Codable/JSValueDecoder.swift"
-  : [1786984807, 681935324]
+  : [1786985045, 89391763]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Codable/JSValueEncoder.swift"
-  : [1786984807, 682457241]
+  : [1786985045, 90305344]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Data+Capacitor.swift"
-  : [1786984807, 678900158]
+  : [1786985045, 83848868]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/DocLinks.swift"
-  : [1786984807, 679219616]
+  : [1786985045, 84512158]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/JS.swift"
-  : [1786984807, 680180324]
+  : [1786985045, 86908980]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/JSExport.swift"
-  : [1786984807, 680463782]
+  : [1786985045, 87650643]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/JSTypes.swift"
-  : [1786984807, 680912157]
+  : [1786985045, 88400392]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/KeyPath.swift"
-  : [1786984807, 683011074]
+  : [1786985045, 91681657]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/KeyValueStore.swift"
-  : [1786984807, 684023783]
+  : [1786985045, 93006319]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/NotificationHandlerProtocol.swift"
-  : [1786984807, 686877533]
+  : [1786985045, 93863873]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/NotificationRouter.swift"
-  : [1786984807, 687618199]
+  : [1786985045, 94688451]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/PluginCallResult.swift"
-  : [1786984807, 688467741]
+  : [1786985045, 95817641]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/PluginConfig.swift"
-  : [1786984807, 688978366]
+  : [1786985045, 97752399]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Plugins/CapacitorCookieManager.swift"
-  : [1786984807, 606417158]
+  : [1786985045, 61908070]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Plugins/CapacitorCookies.swift"
-  : [1786984807, 607360532]
+  : [1786985045, 62622552]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Plugins/CapacitorHttp.swift"
-  : [1786984807, 609049241]
+  : [1786985045, 65287884]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Plugins/CapacitorUrlRequest.swift"
-  : [1786984807, 609401491]
+  : [1786985045, 67369632]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Plugins/Console.swift"
-  : [1786984807, 678701533]
+  : [1786985045, 83126507]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Plugins/HttpRequestHandler.swift"
-  : [1786984807, 679526033]
+  : [1786985045, 86003528]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Plugins/WebView.swift"
-  : [1786984807, 692074491]
+  : [1786985045, 110121289]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/Router.swift"
-  : [1786984807, 689547866]
+  : [1786985045, 104198913]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/TmpViewController.swift"
-  : [1786984807, 690766366]
+  : [1786985045, 105597361]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/UIColor.swift"
-  : [1786984807, 691596991]
+  : [1786985045, 107679902]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/WKWebView+Capacitor.swift"
-  : [1786984807, 695069366]
+  : [1786985045, 116990597]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/WebViewAssetHandler.swift"
-  : [1786984807, 693073449]
+  : [1786985045, 112774865]
   ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/Capacitor/Capacitor/WebViewDelegationHandler.swift"
-  : [1786984807, 694123408]
+  : [1786985045, 114927107]
