@@ -1,0 +1,63 @@
+name: Extract uploaded ZIP
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "*.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract ZIP source
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob dotglob
+
+          zips=( *.zip )
+
+          if [ "${#zips[@]}" -eq 0 ]; then
+            echo "Không tìm thấy file ZIP ở thư mục gốc."
+            exit 1
+          fi
+
+          zip_file="${zips[0]}"
+          echo "Đang bung: $zip_file"
+
+          rm -rf .unpacked-source
+          mkdir .unpacked-source
+
+          unzip -q -o "$zip_file" -d .unpacked-source
+
+          entries=(.unpacked-source/*)
+          source_dir=".unpacked-source"
+
+          if [ "${#entries[@]}" -eq 1 ] && [ -d "${entries[0]}" ]; then
+            source_dir="${entries[0]}"
+          fi
+
+          rm -rf "$source_dir/.git"
+          cp -R "$source_dir"/. .
+          rm -rf .unpacked-source
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "Không có thay đổi để commit."
+            exit 0
+          fi
+
+          git commit -m "Extract uploaded ZIP source"
+          git push
