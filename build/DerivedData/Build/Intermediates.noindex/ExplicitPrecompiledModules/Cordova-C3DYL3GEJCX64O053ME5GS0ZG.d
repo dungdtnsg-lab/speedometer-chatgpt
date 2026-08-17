@@ -1,0 +1,22 @@
+moduledependenciestarget: \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/build/DerivedData/Build/Intermediates.noindex/Pods.build/Release-iphoneos/CapacitorCordova.build/module.modulemap \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/CapacitorCordova.h \
+  /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/UIKit.framework/Modules/module.modulemap \
+  /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/Foundation.framework/Modules/module.modulemap \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/AppDelegate.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVViewController.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDV.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVAvailability.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVPlugin.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVPluginResult.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVCommandDelegate.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVInvokedUrlCommand.h \
+  /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/WebKit.framework/Modules/module.modulemap \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVURLProtocol.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVScreenOrientationDelegate.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVWebViewProcessPoolFactory.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVCommandDelegateImpl.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVPluginManager.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVConfigParser.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/CDVPlugin+Resources.h \
+  /Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/ios/CapacitorCordova/CapacitorCordova/Classes/Public/NSDictionary+CordovaPreferences.h

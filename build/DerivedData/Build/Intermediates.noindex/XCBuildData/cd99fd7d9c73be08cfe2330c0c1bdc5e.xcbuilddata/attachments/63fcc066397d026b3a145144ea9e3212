@@ -1,0 +1,4 @@
+
+module CapacitorGeolocation.__Swift {
+  exclude header "CapacitorGeolocation-Swift.h"
+}

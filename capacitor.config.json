@@ -1,0 +1,15 @@
+{
+  "appId": "com.gps.speedometer.app",
+  "appName": "GPS Speedometer",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "Geolocation": {
+      "permissions": ["location"]
+    }
+  },
+  "ios": {
+    "contentInset": "always",
+    "allowsLinkPreview": false
+  }
+}

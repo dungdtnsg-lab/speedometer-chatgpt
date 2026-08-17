@@ -1,0 +1,5 @@
+
+module CapacitorGeolocation.Swift {
+  header "CapacitorGeolocation-Swift.h"
+  requires objc
+}

@@ -1,0 +1,75 @@
+{
+  "main_library": {
+    "exported_symbols": [
+      {
+        "data": {
+          "global": [
+            "_$s20CapacitorGeolocation0B6PluginC13pluginMethodsSaySo15CAPPluginMethodCGvg",
+            "_$s20CapacitorGeolocation0B6PluginC10identifierSSvpMV",
+            "_$s20CapacitorGeolocation0B6PluginC6bridge8pluginId0E4NameAC0A017CAPBridgeProtocol_p_S2StcfC",
+            "_$s20CapacitorGeolocation0B6PluginC13pluginMethodsSaySo15CAPPluginMethodCGvpWvd",
+            "_$s20CapacitorGeolocation0B6PluginC15locationManager_16didFailWithErrorySo010CLLocationE0C_s0I0_ptF",
+            "_CapacitorGeolocationVersionNumber",
+            "_$s20CapacitorGeolocation0B6PluginC12stopUpdatingyyF",
+            "_$s20CapacitorGeolocation0B6PluginC13pluginMethodsSaySo15CAPPluginMethodCGvpfi",
+            "_$s20CapacitorGeolocation0B6PluginC10identifierSSvpWvd",
+            "_$s20CapacitorGeolocation0B6PluginC6bridge8pluginId0E4NameAC0A017CAPBridgeProtocol_p_S2Stcfc",
+            "_$s20CapacitorGeolocation0B6PluginCN",
+            "_$s20CapacitorGeolocation0B6PluginC16checkPermissionsyySo13CAPPluginCallCF",
+            "_$s20CapacitorGeolocation0B6PluginC12stopUpdatingyyFTq",
+            "_$s20CapacitorGeolocation0B6PluginC18requestPermissionsyySo13CAPPluginCallCF",
+            "_$s20CapacitorGeolocation0B6PluginC6jsNameSSvg",
+            "_$s20CapacitorGeolocation0B6PluginC15locationManager_22didChangeAuthorizationySo010CLLocationE0C_So21CLAuthorizationStatusVtF",
+            "_$s20CapacitorGeolocation0B6PluginC10identifierSSvg",
+            "_$s20CapacitorGeolocation0B6PluginC15locationManager_18didUpdateLocationsySo010CLLocationE0C_SaySo0I0CGtFTq",
+            "_$s20CapacitorGeolocation0B6PluginC6jsNameSSvpMV",
+            "_$s20CapacitorGeolocation0B6PluginCMn",
+            "_$s20CapacitorGeolocation0B6PluginCMa",
+            "_$s20CapacitorGeolocation0B6PluginC15locationManagerSo010CLLocationE0Cvpfi",
+            "_$s20CapacitorGeolocation0B6PluginC9callQueue33_BFA717F0A29A4D831C9388058947DA51LLSDySSAC8CallTypeOGvpfi",
+            "_$s20CapacitorGeolocation0B6PluginC15locationManager_22didChangeAuthorizationySo010CLLocationE0C_So21CLAuthorizationStatusVtFTq",
+            "_CapacitorGeolocationVersionString",
+            "_$s20CapacitorGeolocation0B6PluginC10identifierSSvpfi",
+            "_$s20CapacitorGeolocation0B6PluginC6jsNameSSvpWvd",
+            "_$s20CapacitorGeolocation0B6PluginCACycfc",
+            "_$s20CapacitorGeolocation0B6PluginC15locationManager_18didUpdateLocationsySo010CLLocationE0C_SaySo0I0CGtF",
+            "_$s20CapacitorGeolocation0B6PluginCACycfC",
+            "_$s20CapacitorGeolocation0B6PluginC6jsNameSSvpfi",
+            "_$s20CapacitorGeolocation0B6PluginCfD",
+            "_$s20CapacitorGeolocation0B6PluginC15locationManager_16didFailWithErrorySo010CLLocationE0C_s0I0_ptFTq",
+            "_$s20CapacitorGeolocation0B6PluginC18isUpdatingLocation33_BFA717F0A29A4D831C9388058947DA51LLSbvpfi",
+            "_$s20CapacitorGeolocation0B6PluginC13pluginMethodsSaySo15CAPPluginMethodCGvpMV"
+          ],
+          "objc_class": [
+            "GeolocationPlugin",
+            "PodsDummy_CapacitorGeolocation"
+          ]
+        }
+      }
+    ],
+    "flags": [
+      {
+        "attributes": [
+          "not_app_extension_safe"
+        ]
+      }
+    ],
+    "install_names": [
+      {
+        "name": "@rpath/CapacitorGeolocation.framework/CapacitorGeolocation"
+      }
+    ],
+    "swift_abi": [
+      {
+        "abi": 7
+      }
+    ],
+    "target_info": [
+      {
+        "min_deployment": "13",
+        "target": "arm64-ios"
+      }
+    ]
+  },
+  "tapi_tbd_version": 5
+}

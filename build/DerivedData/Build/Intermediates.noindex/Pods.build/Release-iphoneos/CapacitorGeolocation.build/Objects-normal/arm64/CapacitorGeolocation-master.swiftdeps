@@ -1,0 +1,7 @@
+version: "Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)"
+options: "de949acfc2b4c36dfe764dd9b9e65994fb709b53863a1fa597d7ec1c86333c11"
+build_start_time: [1786983452, 106231000]
+build_end_time: [1786983454, 87392000]
+inputs:
+  ? "/Users/runner/work/speedometer-chatgpt/speedometer-chatgpt/.unpacked-source/node_modules/@capacitor/geolocation/ios/Sources/GeolocationPlugin/GeolocationPlugin.swift"
+  : [1786983421, 678084083]

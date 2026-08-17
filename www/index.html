@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GPS Speed Pro">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#0a0d14">
+  <meta name="description" content="GPS Speedometer Pro - iOS Ultimate Edition with Google Maps & Multi-Constellation Satellite Radar">
+  <title>GPS Speedometer Pro (iOS)</title>
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-512.png">
+  
+  <!-- Leaflet Map CSS for High-Res Google Maps Rendering -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- TOP DASHBOARD: SPEEDOMETER & TELEMETRY -->
+    <section class="speedometer-card">
+      <div class="gauge-header-tools">
+        <button id="btn-reset" class="gauge-tool-btn haptic-btn" title="Đặt lại chuyến đi">🔄</button>
+        <div class="center-speed-limit">
+          <button id="btn-speed-limit" class="speed-limit-badge haptic-btn" title="Giới hạn tốc độ">
+            <span class="limit-label">LIMIT</span>
+            <span class="limit-num" id="limit-val">60</span>
+          </button>
+        </div>
+        <div class="right-tools">
+          <button id="btn-audio-alert" class="gauge-tool-btn haptic-btn active" title="Cảnh báo âm thanh quá tốc">🔔</button>
+          <button id="btn-oled-saver" class="gauge-tool-btn btn-battery haptic-btn" title="Màn hình đen OLED tiết kiệm pin">🔋</button>
+          <button id="btn-hud" class="gauge-tool-btn haptic-btn" title="Chế độ HUD phản chiếu kính lái">🪞</button>
+        </div>
+      </div>
+
+      <!-- Dial Canvas with High-FPS ProMotion Render -->
+      <div class="gauge-center-box">
+        <canvas id="speedGaugeCanvas" width="340" height="340"></canvas>
+        
+        <!-- Center GPS Status, Satellites & Datetime -->
+        <div class="gauge-center-info">
+          <div class="gps-label-row">
+            <div class="gps-badge-top">
+              <span class="gps-text">GNSS GPS</span>
+              <span class="sat-quick-count" id="quick-sat-count">21/38🛰️</span>
+            </div>
+            <div class="gps-dots" id="gps-dots-container">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+            </div>
+          </div>
+          <div class="gauge-date-box" id="gauge-datetime">17/08/2026 21:05:00</div>
+        </div>
+
+        <!-- Digital LCD Readout Box -->
+        <div class="digital-speed-box">
+          <span id="speed-value">0.0</span>
+          <span id="speed-unit-label">KM/H</span>
+        </div>
+      </div>
+
+      <!-- Mode Selector (Bicycle / Units / Car) -->
+      <div class="gauge-footer-bar">
+        <button id="mode-bike" class="vehicle-btn haptic-btn" title="Thang đo xe đạp (0-80 km/h)">🚲</button>
+        
+        <div class="unit-toggle-group">
+          <button class="unit-btn haptic-btn" data-unit="mph">mph</button>
+          <button class="unit-btn haptic-btn" data-unit="knot">knot</button>
+          <button class="unit-btn active haptic-btn" data-unit="kmh">km/h</button>
+        </div>
+
+        <button id="mode-car" class="vehicle-btn active haptic-btn" title="Thang đo ô tô (0-260 km/h)">🚗</button>
+      </div>
+    </section>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="main-tabs-nav">
+      <button class="tab-btn active haptic-btn" data-target="tab-track">Current Track</button>
+      <button class="tab-btn haptic-btn" data-target="tab-satellites">Satellites</button>
+      <button class="tab-btn haptic-btn" data-target="tab-chart">Speed Chart</button>
+      <button class="tab-btn haptic-btn" data-target="tab-export">Log & Xuất</button>
+    </nav>
+
+    <!-- TAB CONTENT AREA -->
+    <main class="tab-content-area">
+      
+      <!-- TAB 1: CURRENT TRACK (GOOGLE MAPS + DETAILED TELEMETRY) -->
+      <section id="tab-track" class="tab-pane active">
+        <!-- Live Signal Status Banner -->
+        <div class="signal-banner good" id="signal-banner-text">
+          🟢 [GNSS Signal: Optimal • Background Active]
+        </div>
+
+        <!-- Subview Toggle: Stats vs Google Maps -->
+        <div class="track-view-switcher">
+          <button id="btn-view-stats" class="view-toggle-btn haptic-btn">📊 Bảng thông số</button>
+          <button id="btn-view-map" class="view-toggle-btn active haptic-btn">🗺️ Bản đồ Google Maps</button>
+        </div>
+
+        <!-- SUBVIEW 1: DETAILED STATS (Chuẩn ảnh mẫu gốc) -->
+        <div id="track-stats-view" class="track-subview">
+          <div class="big-metrics-grid">
+            <div class="metric-card">
+              <div class="metric-value-row">
+                <span class="metric-icon">⏱️</span>
+                <span class="metric-num" id="stat-duration">00:00:00</span>
+              </div>
+              <div class="metric-caption">Duration (Thời gian)</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-value-row">
+                <span class="metric-icon">🛣️</span>
+                <span class="metric-num" id="stat-distance">0.000 KM</span>
+              </div>
+              <div class="metric-caption">Distance (Quãng đường)</div>
+            </div>
+          </div>
+
+          <div class="detailed-list-card">
+            <div class="detail-row">
+              <div class="detail-label">🕒 Start Time</div>
+              <div class="detail-value" id="stat-start-time">--</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">🏎️ Max Speed</div>
+              <div class="detail-value text-red" id="stat-max-speed">0.00 KM/H</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">📈 Avg Speed</div>
+              <div class="detail-value text-cyan" id="stat-avg-speed">0.00 KM/H</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">⛰️ Altitude</div>
+              <div class="detail-value" id="stat-altitude">0.00 M</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">🧭 Heading (Hướng la bàn)</div>
+              <div class="detail-value" id="stat-heading">0.00° N</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">📍 Location (Tọa độ WGS84)</div>
+              <div class="detail-value mono" id="stat-location">0.000000° 0.000000°</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBVIEW 2: GOOGLE MAPS WITH LIVE COLOR TRACKING -->
+        <div id="track-map-view" class="track-subview active">
+          <div class="map-wrapper">
+            <div id="google-map"></div>
+
+            <!-- Map Speed Legend -->
+            <div class="speed-color-legend">
+              <div class="legend-header">
+                <span>Dải màu tốc độ:</span>
+                <span id="current-layer-name" class="layer-pill">Google Đường phố</span>
+              </div>
+              <div class="legend-bar">
+                <span class="color-tag c-green">&lt;20</span>
+                <span class="color-tag c-cyan">20-40</span>
+                <span class="color-tag c-yellow">40-60</span>
+                <span class="color-tag c-orange">60-80</span>
+                <span class="color-tag c-red">&gt;80 km/h</span>
+              </div>
+            </div>
+
+            <!-- Map Floating Action Buttons -->
+            <div class="map-floating-controls">
+              <button id="btn-map-heading-follow" class="map-ctrl-btn haptic-btn" title="Chế độ xoay la bàn dẫn đường">🧭</button>
+              <button id="btn-map-recenter" class="map-ctrl-btn haptic-btn" title="Định tâm vị trí">🎯</button>
+              <button id="btn-map-layer" class="map-ctrl-btn haptic-btn" title="Đổi kiểu Google Maps (Vệ tinh / Lai / Đường phố / Địa hình)">🗺️</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: MULTI-CONSTELLATION SATELLITES RADAR -->
+      <section id="tab-satellites" class="tab-pane">
+        <div class="sat-stats-header">
+          <div class="sat-badge in-view">In View: <strong id="sat-in-view">38</strong></div>
+          <div class="sat-badge in-use">In Use: <strong id="sat-in-use">21</strong></div>
+          <div class="sat-badge accuracy">Độ chính xác: <strong id="sat-acc">±2.4 m</strong></div>
+        </div>
+
+        <!-- Constellation Filter / Legend -->
+        <div class="constellation-legend">
+          <span class="const-tag tag-gps">🟡 GPS</span>
+          <span class="const-tag tag-galileo">🔵 Galileo</span>
+          <span class="const-tag tag-beidou">🔴 BeiDou</span>
+          <span class="const-tag tag-glonass">🟣 GLONASS</span>
+        </div>
+
+        <!-- Radar Canvas with Sweep Radar Scanner -->
+        <div class="radar-box">
+          <canvas id="satelliteRadarCanvas" width="320" height="320"></canvas>
+        </div>
+
+        <!-- Signal Strength Chart -->
+        <div class="signal-chart-box">
+          <div class="chart-header-txt">Cường độ sóng vệ tinh (C/N0 dB-Hz)</div>
+          <div class="sat-bars-row" id="sat-bars-container"></div>
+        </div>
+      </section>
+
+      <!-- TAB 3: REAL-TIME SPEED CHART -->
+      <section id="tab-chart" class="tab-pane">
+        <div class="chart-card">
+          <div class="chart-header-row">
+            <span class="chart-title">Đồ thị vận tốc thời gian thực</span>
+            <span class="chart-live-speed" id="chart-speed-badge">0.0 km/h</span>
+          </div>
+          <canvas id="speedHistoryCanvas" width="340" height="230"></canvas>
+          <div class="chart-footer-note">Đường phát sáng: Vận tốc tức thời • Lưới: Thang đo vận tốc</div>
+        </div>
+      </section>
+
+      <!-- TAB 4: EXPORT & LOGS (GPX, KML, CSV) -->
+      <section id="tab-export" class="tab-pane">
+        <div class="export-card">
+          <h3 class="export-title">Lưu & Xuất Dữ Liệu Hành Trình</h3>
+          <p class="export-desc">Xuất toàn bộ tọa độ, tốc độ, độ cao và thời gian chuyến đi sang các định dạng chuẩn quốc tế:</p>
+          
+          <div class="export-buttons-grid">
+            <button id="btn-export-gpx" class="export-btn btn-gpx haptic-btn">
+              <span class="btn-icon">📁</span>
+              <span class="btn-text">Xuất file GPX (Strava / Garmin)</span>
+            </button>
+
+            <button id="btn-export-kml" class="export-btn btn-kml haptic-btn">
+              <span class="btn-icon">🌍</span>
+              <span class="btn-text">Xuất file KML (Google Earth)</span>
+            </button>
+
+            <button id="btn-export-csv" class="export-btn btn-csv haptic-btn">
+              <span class="btn-icon">📊</span>
+              <span class="btn-text">Xuất file CSV (Excel / Bảng tính)</span>
+            </button>
+          </div>
+
+          <div class="trip-summary-box">
+            <div class="sum-item">Tổng số điểm GPS: <strong id="log-point-count">0 điểm</strong></div>
+            <div class="sum-item">Trạng thái ghi log: <strong id="log-status">Sẵn sàng</strong></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- BOTTOM ACTION FOOTER (WITH IPHONE SAFE AREA) -->
+    <footer class="app-footer">
+      <button id="btn-gps-toggle" class="main-action-btn haptic-btn">BẬT GPS THEO DÕI</button>
+      <button id="btn-screen-wake" class="sub-action-btn haptic-btn">Giữ sáng: BẬT</button>
+    </footer>
+
+    <!-- OLED POCKET BLACKOUT OVERLAY -->
+    <div id="oled-blackout-overlay" class="oled-overlay">
+      <div class="oled-hint">
+        <span class="pulse-icon">🟢 GPS ĐANG THEO DÕI NGẦM</span>
+        <p>Màn hình đen tiết kiệm pin OLED</p>
+        <p class="sub-hint">Chạm đúp vào màn hình để quay lại</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Leaflet Library for Google Maps tiles -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
